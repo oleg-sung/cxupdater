@@ -8,7 +8,9 @@ Install the current version with PyPI:
 pip install cxupdater
 ```
 Or from Github:
-
+```bash
+pip install https://github.com/oleg-sung/cxupdater/archive/main.zip
+```
 
 ## Usage
 1. Create the update package using Executable from cx_Freeze and setup from cxupdater:

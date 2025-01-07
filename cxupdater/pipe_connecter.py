@@ -2,7 +2,6 @@ import json
 from typing import Callable, Union, Any
 
 import pywintypes
-import requests
 import win32file
 import win32pipe
 

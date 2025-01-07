@@ -1,40 +1,15 @@
-import os
-import re
-from pathlib import Path
 from typing import Dict, Tuple, Union
 
 import toml
-from packaging.version import Version
 from requests import Response
 
-from cxupdater.config import UpdatePackage, ARCH_PREFIX, is_64bit
+from cxupdater.config import UpdatePackage, is_64bit
 
 
 class VersionParser:
-    VERSION_PATTERN = r'\d+\.\d+(?:\.\d+)*'
 
     def __init__(self):
         pass
-
-    def get_latest_exe_path_from_local_folder(self, src: Path, app_name: str) -> Path:
-        """
-        Getting a path of the latest version from src path using name of the app.
-
-        Args:
-            src (Path): Path of the source folder.
-            app_name (str): Name of the app.
-
-        Returns:
-            Path of the latest app executable.
-        """
-        found_package_names = [
-            UpdatePackage(name, None, re.search(self.VERSION_PATTERN, name).group())
-            for name in os.listdir(src)
-            if name.startswith(app_name) and name.endswith(ARCH_PREFIX) and re.search(self.VERSION_PATTERN, name)
-        ]
-        latest_version = max(found_package_names, key=lambda x: Version(x.version))
-        execute_name = app_name + '.exe'
-        return src / latest_version.name / execute_name
 
     def get_latest_version_from_response(self, response: Response) -> UpdatePackage:
         """

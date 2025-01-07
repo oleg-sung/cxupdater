@@ -84,7 +84,9 @@ class BuildUpdate(BuildEXE):
             icon=self.app_icon,
             base='Win32GUI',
         )
-        self.distribution.command_options['build_exe'] = {'build_exe': ('setup script', self.build_exe)}
+        self.excludes = ['logging', 'pydoc', 'unittest', 'http', 'xml']
+        self.includes = []
+        self.packages = []
         self.distribution.executables = [executable]
         self.distribution.commands = ['build_exe']
 

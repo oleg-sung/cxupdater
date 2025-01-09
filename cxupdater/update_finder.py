@@ -8,7 +8,7 @@ from packaging.version import Version
 from cxupdater.pipe_connecter import PipeReceiver
 from cxupdater.config import UpdaterStatus, NAMED_PIPE, UpdatePackage, ARCH_PREFIX
 from cxupdater.utils import run_execute, get_update_installer_path, create_message_dict
-from cxupdater.version_parser import VersionParser
+from cxupdater.version_parser import PackageParser
 
 
 class CxDelegateInterface(ABC):
@@ -56,7 +56,7 @@ class CxUpdater:
             self._delegate = delegate
         else:
             raise TypeError('delegate must be instance of CxDelegateInterface')
-        self.version_parser = VersionParser()
+        self.version_parser = PackageParser()
         self._arh = ARCH_PREFIX
         self._named_pipe = PipeReceiver(NAMED_PIPE)
         self.delegate_mapping: Dict[str, Callable[[dict], None]] = {

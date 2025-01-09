@@ -3,7 +3,7 @@ import setuptools
 from cx_Freeze import Distribution
 from cx_Freeze.command import build_exe
 
-from .version_parser import VersionParser
+from .version_parser import PackageParser
 from .update_finder import CxUpdater, CxDelegateInterface
 from .commands.build_update import BuildUpdate as build_update
 from .pipe_connecter import PipeWriter, PipeReceiver, UpdateInstallerMessageHandler
@@ -12,7 +12,7 @@ from .utils import *
 
 __all__ = [
     'setup',
-    'VersionParser',
+    'PackageParser',
     'CxUpdater',
     'CxDelegateInterface',
     'PipeWriter',

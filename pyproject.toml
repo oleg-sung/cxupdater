@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cxupdater"
-version = "0.1.1"
+version = "0.1.2"
 authors = [
   { name="Oleg Sungurovsky", email="safasgasc.asfg@gmail.com" },
 ]
@@ -29,3 +29,6 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/oleg-sung/cxupdater"
 Issues = "https://github.com/oleg-sung/cxupdater/issues"
+
+[project.scripts]
+generate-toml = "cxupdater.scripts.generate_toml:main"

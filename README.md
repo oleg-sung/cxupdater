@@ -41,7 +41,7 @@ pip install https://github.com/oleg-sung/cxupdater/archive/main.zip
    python setup.py build_update
    ```
    During the execution of the command, a zip archive will be created containing an intermediate executable file for launching the main application and Updater.exe to update the application automatically.
-2. Create a .toml with the same name as the application, for example TestApp.toml with the following contents:
+2. Use the `generate_toml -p path\to\folder\contains\update\packages -u https://example.com(your ftp update server)` command or create a .toml with the same name as the application, for example TestApp.toml with the following contents:
    ```toml
    [cxupdater.package.x32] # or x64 
 
@@ -54,7 +54,7 @@ pip install https://github.com/oleg-sung/cxupdater/archive/main.zip
       * **name**: The name includes an app's name, version and arch prefix.
       * **version**: Version of the app
       * **url**: The url for downloading update package
-3. Move TestApp.toml and TestApp-1.0.0.win32.zip to https://example/ (yours ftp server for publishing an updates)
+3. Move TestApp.toml and TestApp-1.0.0.win32.zip to https://example/ (your ftp server for publishing an updates)
 4. In the code application, create an instance of the update by providing the URL to the file.toml, the current version of the application, implements the delegate of the CxDelegateInterface interface.
    ```python
    from cxupdater import CxUpdater, CxDelegateInterface

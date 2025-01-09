@@ -2,6 +2,7 @@ import ctypes
 import importlib.resources
 import sys
 from pathlib import Path
+from urllib.parse import urlparse
 
 from cxupdater.config import UPDATER_NAME
 
@@ -76,3 +77,20 @@ def get_script_path(script_name: str) -> str:
             return str(path)
     except Exception:
         raise FileNotFoundError(f"{script_name} is not found.")
+
+
+def is_valid_url(url: str) -> bool:
+    """
+    Checks if the url is valid.
+
+    Args:
+        url (str): url to check
+
+    Return:
+        bool: True if url is valid, False otherwise
+    """
+    try:
+        result = urlparse(url)
+        return all([result.scheme, result.netloc])
+    except ValueError:
+        return False

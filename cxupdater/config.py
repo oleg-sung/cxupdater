@@ -3,6 +3,8 @@ from enum import Enum
 from dataclasses import dataclass
 from typing import Union
 
+from packaging.version import Version
+
 
 class UpdaterStatus(Enum):
     STARTING = 'Starting'
@@ -16,9 +18,15 @@ class UpdaterStatus(Enum):
 
 @dataclass(frozen=True)
 class UpdatePackage:
-    name: Union[str, None]
-    address: Union[str, None]
     version: str
+    name: Union[str, None] = None
+    address: Union[str, None] = None
+    arch: Union[str, None] = None
+
+    def __gt__(self, other: 'UpdatePackage') -> bool:
+        if self.arch != other.arch:
+            return False
+        return Version(self.version) > Version(other.version)
 
 
 def is_64bit() -> bool:

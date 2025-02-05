@@ -92,5 +92,3 @@ class PackageParser:
         packages = list(filter(lambda x: x.arch == arch, packages_list))
 
         return max(packages) if any(packages) else None
-
-

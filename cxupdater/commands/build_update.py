@@ -4,13 +4,13 @@ import zipfile
 from pathlib import Path
 
 from cx_Freeze import Executable
-from cx_Freeze.command.build_exe import BuildEXE
+from cx_Freeze.command.build_exe import build_exe
 
 from cxupdater.config import UPDATER_NAME, ARCH_PREFIX
 from cxupdater.utils import get_script_path
 
 
-class BuildUpdate(BuildEXE):
+class BuildUpdate(build_exe):
 
     def initialize_options(self):
         if hasattr(self.distribution, 'executables'):

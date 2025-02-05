@@ -4,24 +4,25 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cxupdater"
-version = "0.1.2"
+version = "0.2.1.dev0"
 authors = [
   { name="Oleg Sungurovsky", email="safasgasc.asfg@gmail.com" },
 ]
 description = "Auto-update an application on Python"
 readme = "README.md"
 license = {file = "LICENSE"}
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 dependencies = [
-    "cx-Freeze>=6.13.2",
-    "pywin32>=306",
-    "requests>=2.31.0",
-    "packaging>=24.0",
-    "toml>=0.10.0"
+    "cx-Freeze>=7.2.9",
+    "pywin32>=308",
+    "requests>=2.32.3",
+    "packaging>=24.2",
+    "toml>=0.10.2"
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]

@@ -1,6 +1,5 @@
 import setuptools
 
-from cx_Freeze import Distribution
 from cx_Freeze.command import build_exe
 
 from .version_parser import PackageParser
@@ -25,17 +24,12 @@ __all__ = [
 __version__ = '0.1.0'
 
 
-def _add_command_class(command_classes, name, cls):
-    if name not in command_classes:
-        command_classes[name] = cls
-
-
 def setup(**attrs):
-    attrs.setdefault("distclass", Distribution)
-    command_classes = attrs.setdefault("cmdclass", {})
-    _add_command_class(command_classes, "build_update", build_update)
-    _add_command_class(command_classes, "build_exe", build_exe)
-    setuptools.setup(**attrs)
+    cmdclass = attrs.setdefault("cmdclass", {})
+    cmdclass.setdefault("build_update", build_update)
+    cmdclass.setdefault("build_exe", build_exe)
+    attrs.setdefault("executables", [])
+    return setuptools.setup(**attrs)
 
 
 setup.__doc__ = setuptools.setup.__doc__

@@ -35,7 +35,7 @@ def get_latest_exe_path_from_local_folder(src: Path, app_name: str) -> Path:
 def main(path: Path):
     args = sys.argv[1:]
     command = [str(path)] + args
-    process = subprocess.Popen(command)
+    process = subprocess.Popen(command, cwd=path.parent)
     if any(args):
         process.wait()
     else:

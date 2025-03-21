@@ -28,11 +28,12 @@ class PackageParser:
         """
         parsed_data = toml.loads(response.text)
         if parsed_data is not None:
-            name, url, version = self._toml_parser(parsed_data)
-            return UpdatePackage(version, name=name, address=url)
+            result = self._toml_parser(parsed_data)
+            if result is not None:
+                name, url, version = result
+                return UpdatePackage(version, name=name, address=url)
 
-        else:
-            return UpdatePackage('0')
+        return UpdatePackage('0')
 
     @staticmethod
     def _toml_parser(toml_dict: Dict) -> Union[Tuple[str, str, str], None]:

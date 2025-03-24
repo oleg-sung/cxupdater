@@ -28,7 +28,7 @@ def crate_toml_dict(
 
     data = {}
     if latest_package is not None:
-        name = f'{latest_package.name}-{latest_package.version}.{latest_package.arch}'
+        name = f'{latest_package.name}-{latest_package.version}.{latest_package.arch}.zip'
         data['cxupdater'] = {
             'package': {
                 'x32' if latest_package.arch == 'win32' else 'x64': {

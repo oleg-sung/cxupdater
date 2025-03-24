@@ -29,11 +29,14 @@ def crate_toml_dict(
     data = {}
     if latest_package is not None:
         name = f'{latest_package.name}-{latest_package.version}.{latest_package.arch}'
-        data[f'cxupdater.package.{"x32" if latest_package.arch == "win32" else "x64"}'] = {
-            'name': name,
-            'version': latest_package.version,
-            'url': urljoin(url_, name),
-
+        data['cxupdater'] = {
+            'package': {
+                'x32' if latest_package.arch == 'win32' else 'x64': {
+                    'name': name,
+                    'version': latest_package.version,
+                    'url': urljoin(url_, name),
+                }
+            }
         }
 
     return data

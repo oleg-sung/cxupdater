@@ -26,7 +26,10 @@ class PackageParser:
         Returns:
             UpdatePackage includes the max available version
         """
-        parsed_data = toml.loads(response.text)
+        try:
+            parsed_data = toml.loads(response.text)
+        except toml.TomlDecodeError:
+            return UpdatePackage('0')
         if parsed_data is not None:
             result = self._toml_parser(parsed_data)
             if result is not None:

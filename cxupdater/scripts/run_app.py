@@ -46,6 +46,9 @@ if __name__ == "__main__":
     path_to_executable = Path(sys.executable)
     src_folder_path = path_to_executable.parent
     name = path_to_executable.name
-    main_exe_path = get_latest_exe_path_from_local_folder(src_folder_path, name[:-4])
+    try:
+        main_exe_path = get_latest_exe_path_from_local_folder(src_folder_path, name[:-4])
+    except ValueError:
+        main_exe_path = get_latest_exe_path_from_local_folder(src_folder_path, name[:-4].capitalize())
     main(main_exe_path)
     sys.exit(0)
